@@ -9,7 +9,7 @@ const recipes = [
     rating: 4.5,
     description:
       "Paneer Butter Masala, also known as butter paneer, is a rich & creamy curry made with paneer.",
-    
+    image: "paneer2.jpeg",
   },
   {
     title: "Carrot Halwa",
@@ -17,7 +17,7 @@ const recipes = [
     rating: 4.6,
     description:
       "Carrot halwa is a carrot-based sweet dessert pudding made by placing grated carrot in milk.",
-    
+    image: "carrot1.jpeg",
   },
   {
     title: "Tandoori Chicken",
@@ -25,7 +25,7 @@ const recipes = [
     rating: 4.7,
     description:
       "Tandoori chicken is a dish made from chicken marinated in yogurt and spices.",
-    
+    image: "chicken.jpeg",
   },
   {
     title: "Channa Masala",
@@ -33,7 +33,7 @@ const recipes = [
     rating: 4.8,
     description:
       "Channa masala is North Indian curried dish made with white chickpeas, onions.",
-  
+    image: "channa.jpeg",
   },
   {
     title: "Chicken Biryani",
@@ -41,7 +41,7 @@ const recipes = [
     rating: 4.9,
     description:
       "Biryani is a mixed rice dish mainly popular in South Asia. It is made with meat and rice.",
-    
+    image: "briyani.jbeg",
   },
 ];
 
@@ -71,7 +71,7 @@ function App() {
             <button className="btn">Get Recipe</button>
           </div>
           <img
-            src="sizzler.jpg"
+            src="vegetable.jpeg"
             alt="Vegetable Sizzler"
             className="highlight-image"
           />
