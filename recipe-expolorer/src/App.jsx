@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginForm from './Components/Assets/LoginForm/LoginForm';
+import Recipe from './Components/Assets/Recipe';
 
 function App() {
   return(
     <div>
-<LoginForm ></LoginForm>
+<Recipe></Recipe>
     </div>
   );
 }
