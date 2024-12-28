@@ -1,35 +1,107 @@
-import React from 'react';
-import './LoginForm.css';
+import React, { useState } from 'react';
 
+// Reusable Input Component
+const InputField = ({ type, placeholder, value, onChange }) => (
+  <input
+    type={type}
+    placeholder={placeholder}
+    value={value}
+    onChange={(e) => onChange(e.target.value)}
+    style={{ marginBottom: '10px', padding: '10px', width: '100%', borderRadius:'10px' }}
+  />
+);
 
-const LoginForm = () => {
-    return (
-        <div>
-        <div className='wrapper'>
-        <form action="">
-        <span style={{color:"orange", fontSize:"35px", marginLeft:"140px"}}><i class="fa-solid fa-burger"></i></span>
-            <h1>Food Recipe</h1> 
-            <h4>Sign in</h4>
-            <div className="input-box">
-                <label>Email</label> 
-                <input className="email" type="text" placeholder='example@mail.com' required/>
-                </div>
-            <div className="input-box">
-                <label>Password</label>
-                <input className="email1" type="password" placeholder='' required/>
-                </div>
-                <div className="remember-forgot">
-                    <label style={{marginTop:"15px"}}><input type="checkbox"/>Remember me</label>
-                    <a style={{marginTop:"15px"}} href="#">Forgot password?</a>
-                </div>
-                <button className="button" type="submit">Sign in</button>
-                <div className="register-link">
-                    <p>Didn't have an account? <a href="#">sign up</a></p>
+// Reusable Button Component
+const Button = ({ text, onClick }) => (
+  <button
+    onClick={onClick}
+    style={{ padding: '10px', backgroundColor: 'orange', color: 'white', border: 'none', cursor: 'pointer',  width:'107%'}}
+  >
+    {text}
+  </button>
+);
 
-                </div>
-        </form>
-        </div>
-        </div>
-    );
+// Login Form Component
+const Login = ({ onSwitchToRegister }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    alert(`Logged in with Username: ${username}`);
+  };
+
+  return (
+    <div style={{ maxWidth: '300px', margin: 'auto', textAlign: 'center', padding:'50px 100px 100px 475px '}}>
+      <div style={{color:'orange'}}>
+      <h2>Food Recipe</h2>
+      <h5>Sign in</h5>
+      </div>
+      <InputField type="email" placeholder="example@mail.com" value={username} onChange={setUsername} />
+      <InputField type="password" placeholder="" value={password} onChange={setPassword} />
+      <Button text="sign in" onClick={handleLogin} />
+      <p>
+        Don't have an account?{' '}
+        <span style={{ color: 'orange', cursor: 'pointer' }} onClick={onSwitchToRegister}>
+          sign up
+        </span>
+      </p>
+    </div>
+  );
 };
+
+// Registration Form Component
+const RegistrationForm = ({ onSwitchToLogin }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleRegister = () => {
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+    alert(`Registered with Username: ${username}, Email: ${email}`);
+  };
+
+  return (
+    <div style={{ maxWidth: '300px', margin: 'auto', textAlign: 'center', padding:'50px 100px 100px 475px ' }}>
+      <div style={{color:'orange'}}>
+      <h2>Food Recipe</h2>
+      <h5>Sign up</h5>
+      </div>
+      
+      <InputField type="email" placeholder="example@mail.com" value={email} onChange={setEmail} />
+      <InputField type="password" placeholder="" value={password} onChange={setPassword} />
+      <InputField
+        type="password"
+        placeholder=""
+        value={confirmPassword}
+        onChange={setConfirmPassword}
+      />
+      <Button text="Sign up" onClick={handleRegister} />
+      <p>
+        Already have an account?{' '}
+        <span style={{ color: 'orange', cursor: 'pointer' }} onClick={onSwitchToLogin}>
+          sign in
+        </span>
+      </p>
+    </div>
+  );
+};
+
+// Main Component
+const LoginForm = () => {
+  const [isLogin, setIsLogin] = useState(true);
+
+  return (
+    <div style={{ padding: '20px' }}>
+      {isLogin ? (
+        <Login onSwitchToRegister={() => setIsLogin(false)} />
+      ) : (
+        <RegistrationForm onSwitchToLogin={() => setIsLogin(true)} />
+      )}
+    </div>
+  );
+};
+
 export default LoginForm;

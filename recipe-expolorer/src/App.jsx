@@ -4,7 +4,7 @@ import LoginForm from './Components/Assets/LoginForm/LoginForm';
 function App() {
   return(
     <div>
-      <LoginForm />
+<LoginForm ></LoginForm>
     </div>
   );
 }
